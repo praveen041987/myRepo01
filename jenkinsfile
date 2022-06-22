@@ -1,0 +1,28 @@
+pipeline{
+    agent any
+    tools{
+        maven 'MAVEN'
+    }
+    stages{
+        stage('first'){
+            steps{
+                echo "this is first step to check if my code is runnig"
+                echo "now will move to second stage"
+            }
+        }
+        stage('gitpull'){
+            steps{
+                echo "pull file from git"
+                git 'https://github.com/ValaxyTech/hello-world.git'
+            }
+        }
+        stage('maven build'){
+            steps{
+                echo "building Package"
+                sh 'mvn --version'
+
+            }
+        }
+        
+    }
+}
